@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@custom-variant light (&:where(.light, .light *));
+
+@theme {
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-bg: #0a0a0f;
+  --color-bg-light: #f7f7fb;
+  --color-surface: #12121a;
+  --color-surface-light: #ffffff;
+  --color-violet: #8b5cf6;
+  --color-cyan: #22d3ee;
+  --color-border-dark: rgba(255, 255, 255, 0.08);
+  --color-border-light: rgba(10, 10, 15, 0.08);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: #e4e4ec;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+html.light body {
+  background-color: var(--color-bg-light);
+  color: #16161f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-violet);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-violet), var(--color-cyan));
+  border-radius: 999px;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-border-light);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-violet), var(--color-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Background grid + glow, used behind sections */
+.bg-grid {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+html.light .bg-grid {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.12) 1px, transparent 1px);
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Typing cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  background: var(--color-cyan);
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Terminal blinking dot */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Utility: hide scrollbar for horizontal tag rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
