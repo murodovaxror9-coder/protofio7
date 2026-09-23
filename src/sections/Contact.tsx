@@ -8,6 +8,13 @@ import { useT } from '../hooks/useT'
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+const TELEGRAM_BOT_TOKEN = '8689126366:AAHBPBzVaVlAfTn-eN2FKp-r5F5QT8D80T0'
+const TELEGRAM_CHAT_ID = '7265142455'
+
 export function Contact() {
   const t = useT()
   const [status, setStatus] = useState<FormStatus>('idle')
@@ -30,10 +37,16 @@ export function Contact() {
     setStatus('sending')
 
     try {
-      const res = await fetch('/api/send-telegram', {
+      const text =
+        `<b>Yangi xabar — portfolio sayt</b>\n\n` +
+        `<b>Ism:</b> ${escapeHtml(form.name.trim())}\n` +
+        `<b>Email:</b> ${escapeHtml(form.email.trim())}\n` +
+        `<b>Xabar:</b>\n${escapeHtml(form.message.trim())}`
+
+      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' }),
       })
 
       if (!res.ok) throw new Error('Request failed')
