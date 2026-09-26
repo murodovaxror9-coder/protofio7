@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, Mail, MapPin } from 'lucide-react'
+import { ArrowUpRight, GraduationCap, Mail, MapPin } from 'lucide-react'
+import { GithubIcon } from '../components/ui/BrandIcons'
 import { GlassCard } from '../components/ui/GlassCard'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { profile } from '../data/profile'
@@ -54,6 +55,31 @@ export function About() {
             ))}
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-10"
+        >
+          <a href={profile.github.url} target="_blank" rel="noopener noreferrer">
+            <GlassCard className="flex items-center justify-between gap-4" hover>
+              <div className="flex items-center gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-400/20 text-cyan-300">
+                  <GithubIcon size={20} />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-wide text-white/40 light:text-black/40">
+                    {t('about.githubTitle')}
+                  </div>
+                  <div className="text-sm font-medium">{profile.github.label}</div>
+                </div>
+              </div>
+              <ArrowUpRight size={18} className="shrink-0 text-white/40" />
+            </GlassCard>
+          </a>
+        </motion.div>
       </div>
     </section>
   )

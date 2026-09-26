@@ -21,6 +21,7 @@ export const translations = {
         "Zamonaviy, tez va chiroyli veb-ilovalar yarataman. React, TypeScript va Tailwind CSS — mening kundalik qurollarim.",
       ctaPrimary: 'Loyihalarni ko’rish',
       ctaSecondary: 'Bog’lanish',
+      ctaResume: 'Rezyume',
       stats: {
         projects: 'Loyihalar',
         stack: 'Texnologiyalar',
@@ -46,6 +47,7 @@ export const translations = {
       locationLabel: 'Manzil',
       affiliationLabel: 'Ta’lim / Hamkorlik',
       emailLabel: 'Email',
+      githubTitle: 'GitHub',
     },
     tech: {
       title: 'Texnologiyalar',
@@ -198,6 +200,7 @@ export const translations = {
         'I build modern, fast and beautiful web applications. React, TypeScript and Tailwind CSS are my everyday tools.',
       ctaPrimary: 'View Projects',
       ctaSecondary: 'Get in Touch',
+      ctaResume: 'Resume',
       stats: {
         projects: 'Projects',
         stack: 'Technologies',
@@ -223,6 +226,7 @@ export const translations = {
       locationLabel: 'Location',
       affiliationLabel: 'Education / Affiliation',
       emailLabel: 'Email',
+      githubTitle: 'GitHub',
     },
     tech: {
       title: 'Tech Stack',

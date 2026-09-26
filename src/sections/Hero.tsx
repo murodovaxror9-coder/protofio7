@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail } from 'lucide-react'
+import { ArrowRight, Download, Mail } from 'lucide-react'
 import { Badge } from '../components/ui/Badge'
 import { stats } from '../data/stats'
 import { useCountUp } from '../hooks/useCountUp'
@@ -89,6 +89,13 @@ export function Hero() {
               className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold transition-all hover:border-violet-400/60 hover:bg-white/5"
             >
               <Mail size={16} /> {t('hero.ctaSecondary')}
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold transition-all hover:border-cyan-400/60 hover:bg-white/5"
+            >
+              <Download size={16} /> {t('hero.ctaResume')}
             </a>
           </motion.div>
 

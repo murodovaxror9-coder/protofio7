@@ -31,8 +31,8 @@ export const profile: Profile = {
     url: 'https://t.me/username', // TODO: Telegram havolasi
   },
   github: {
-    label: 'github.com/username', // TODO: GitHub username
-    url: 'https://github.com/username', // TODO: GitHub havolasi
+    label: 'github.com/murodovaxror9-coder',
+    url: 'https://github.com/murodovaxror9-coder',
   },
   linkedin: {
     label: 'linkedin.com/in/username', // TODO: LinkedIn username
