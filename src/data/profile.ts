@@ -12,12 +12,12 @@ export interface Profile {
   affiliation: string
   phone: string
   telegram: SocialLink
+  instagram: SocialLink
   github: SocialLink
   linkedin: SocialLink
   telegramBot: SocialLink
 }
 
-// TODO: axror6495@gmail.com dan tashqari barcha placeholder qiymatlarni haqiqiy ma'lumotlar bilan to'ldiring.
 export const profile: Profile = {
   name: 'Axror Murodov',
   brand: 'murodov.dev',
@@ -25,18 +25,22 @@ export const profile: Profile = {
   location: 'Tashkent, Uzbekistan',
   email: 'axror6495@gmail.com',
   affiliation: 'Mars IT School',
-  phone: '+998 90 000 00 00', // TODO: haqiqiy telefon raqamini kiriting
+  phone: '+998 70 520 78 78',
   telegram: {
-    label: '@username', // TODO: Telegram username
-    url: 'https://t.me/username', // TODO: Telegram havolasi
+    label: '@Murodov_777',
+    url: 'https://t.me/Murodov_777',
+  },
+  instagram: {
+    label: '@axci_7777',
+    url: 'https://www.instagram.com/axci_7777/',
   },
   github: {
     label: 'github.com/murodovaxror9-coder',
     url: 'https://github.com/murodovaxror9-coder',
   },
   linkedin: {
-    label: 'linkedin.com/in/username', // TODO: LinkedIn username
-    url: 'https://linkedin.com/in/username', // TODO: LinkedIn havolasi
+    label: 'linkedin.com/in/axror-murodov',
+    url: 'https://www.linkedin.com/in/axror-murodov-b54123403/',
   },
   telegramBot: {
     label: '@murodov_dev_bot', // TODO: Contact form yuboradigan Telegram bot username

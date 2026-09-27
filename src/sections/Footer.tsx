@@ -1,5 +1,5 @@
 import { ArrowUp, Mail, Send } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '../components/ui/BrandIcons'
+import { InstagramIcon, LinkedinIcon } from '../components/ui/BrandIcons'
 import { navItems } from '../data/navigation'
 import { profile } from '../data/profile'
 import { useT } from '../hooks/useT'
@@ -11,7 +11,7 @@ export function Footer() {
   const socials = [
     { icon: Mail, href: `mailto:${profile.email}`, label: 'Email' },
     { icon: Send, href: profile.telegram.url, label: 'Telegram' },
-    { icon: GithubIcon, href: profile.github.url, label: 'GitHub' },
+    { icon: InstagramIcon, href: profile.instagram.url, label: 'Instagram' },
     { icon: LinkedinIcon, href: profile.linkedin.url, label: 'LinkedIn' },
   ]
 
