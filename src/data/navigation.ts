@@ -5,11 +5,10 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-  { id: 'about', labelKey: 'nav.about', href: '#about' },
-  { id: 'tech', labelKey: 'nav.tech', href: '#tech' },
-  { id: 'experience', labelKey: 'nav.experience', href: '#experience' },
-  { id: 'certificates', labelKey: 'nav.certificates', href: '#certificates' },
-  { id: 'projects', labelKey: 'nav.projects', href: '#projects' },
-  { id: 'ai', labelKey: 'nav.ai', href: '#ai-tools' },
-  { id: 'contact', labelKey: 'nav.contact', href: '#contact' },
+  { id: 'about', labelKey: 'nav.about', href: '/#about' },
+  { id: 'tech', labelKey: 'nav.tech', href: '/#tech' },
+  { id: 'experience', labelKey: 'nav.experience', href: '/#experience' },
+  { id: 'projects', labelKey: 'nav.projects', href: '/#projects' },
+  { id: 'ai', labelKey: 'nav.ai', href: '/#ai-tools' },
+  { id: 'contact', labelKey: 'nav.contact', href: '/#contact' },
 ]

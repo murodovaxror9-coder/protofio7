@@ -1,3 +1,8 @@
+export interface LocalizedText {
+  uz: string
+  en: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -7,6 +12,10 @@ export interface Project {
   liveUrl: string
   codeUrl: string
   featured?: boolean
+  // Add a real screenshot from public/projects, for example /projects/devlab-lms.webp.
+  image?: string
+  // Publish only the responsibilities confirmed by the project author.
+  contributions?: LocalizedText[]
 }
 
 // TODO: liveUrl / codeUrl manzillarini haqiqiy havolalar bilan almashtiring
@@ -26,10 +35,20 @@ export const projects: Project[] = [
     title: 'Islamic Companion',
     descriptionKey: 'projects.islamicCompanion.description',
     detailsKey: 'projects.islamicCompanion.details',
-    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'Aladhan API'],
-    liveUrl: 'https://TODO-islamic-companion.example.com',
-    codeUrl: 'https://github.com/TODO/islamic-companion',
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'React Router'],
+    liveUrl: 'https://islam-tashbeh.vercel.app',
+    codeUrl: 'https://github.com/murodovaxror9-coder/islam-tashbeh',
     featured: true,
+    contributions: [
+      {
+        uz: 'React va Vite asosidagi desktop interfeys, sahifalar va navigatsiyani yaratdim.',
+        en: 'Built the desktop interface, pages, and navigation with React and Vite.',
+      },
+      {
+        uz: 'Qur’on, duolar, namoz vaqtlari, tasbeh va qibla uchun alohida ko‘rinishlarni ishlab chiqdim.',
+        en: 'Created dedicated views for the Quran, duas, prayer times, tasbih, and qibla.',
+      },
+    ],
   },
   {
     id: 'soch',

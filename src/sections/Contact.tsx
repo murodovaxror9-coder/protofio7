@@ -5,15 +5,11 @@ import { GlassCard } from '../components/ui/GlassCard'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { profile } from '../data/profile'
 import { useT } from '../hooks/useT'
+import { isLinkAvailable } from '../utils/projectUrl'
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
-function escapeHtml(value: string) {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
-const TELEGRAM_BOT_TOKEN = '8689126366:AAHBPBzVaVlAfTn-eN2FKp-r5F5QT8D80T0'
-const TELEGRAM_CHAT_ID = '7265142455'
+const isRealPhone = !/0{2} 0{2} 0{2}$/.test(profile.phone)
 
 export function Contact() {
   const t = useT()
@@ -21,32 +17,27 @@ export function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
 
   const contactCards = [
-    { icon: Mail, label: t('contact.emailLabel'), value: profile.email, href: `mailto:${profile.email}` },
-    { icon: Phone, label: t('contact.phoneLabel'), value: profile.phone, href: `tel:${profile.phone}` },
+    { icon: Mail, label: t('contact.emailLabel'), value: profile.email, href: `mailto:${profile.email}`, show: true },
+    { icon: Phone, label: t('contact.phoneLabel'), value: profile.phone, href: `tel:${profile.phone}`, show: isRealPhone },
     {
       icon: MessageCircle,
       label: t('contact.telegramLabel'),
       value: profile.telegram.label,
       href: profile.telegram.url,
+      show: isLinkAvailable(profile.telegram.url),
     },
-    { icon: MapPin, label: t('contact.locationLabel'), value: profile.location, href: undefined },
-  ]
+    { icon: MapPin, label: t('contact.locationLabel'), value: profile.location, href: undefined, show: true },
+  ].filter((card) => card.show)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setStatus('sending')
 
     try {
-      const text =
-        `<b>Yangi xabar — portfolio sayt</b>\n\n` +
-        `<b>Ism:</b> ${escapeHtml(form.name.trim())}\n` +
-        `<b>Email:</b> ${escapeHtml(form.email.trim())}\n` +
-        `<b>Xabar:</b>\n${escapeHtml(form.message.trim())}`
-
-      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const res = await fetch('/api/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' }),
+        body: JSON.stringify({ name: form.name.trim(), email: form.email.trim(), message: form.message.trim() }),
       })
 
       if (!res.ok) throw new Error('Request failed')
@@ -61,7 +52,7 @@ export function Contact() {
   return (
     <section id="contact" className="relative py-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading eyebrow="07 / Contact" title={t('contact.title')} />
+        <SectionHeading eyebrow="08 / Contact" title={t('contact.title')} />
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <motion.div

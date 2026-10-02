@@ -141,3 +141,114 @@ html.light .bg-grid {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Code-drawn project artwork. Real screenshots replace it when available. */
+.project-cover {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  aspect-ratio: 8 / 5;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--cover-accent) 25%, transparent);
+  border-radius: 0.75rem;
+  background: radial-gradient(ellipse at 65% 35%, color-mix(in srgb, var(--cover-accent) 20%, #11131c), #0d1019 75%);
+  color: var(--cover-accent);
+}
+
+.project-cover-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(#ffffff06 1px, transparent 1px), linear-gradient(90deg, #ffffff06 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(130deg, #000, transparent);
+}
+
+.project-cover-number {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font: 500 12px var(--font-mono);
+  opacity: 0.65;
+}
+
+.project-cover-orbit {
+  position: absolute;
+  left: 58%;
+  top: 46%;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+}
+
+.project-cover-orbit-outer {
+  width: 75%;
+  height: 85%;
+  opacity: 0.12;
+}
+
+.project-cover-orbit-inner {
+  width: 56%;
+  height: 64%;
+  opacity: 0.2;
+}
+
+.project-cover-symbol {
+  position: absolute;
+  top: 46%;
+  left: 58%;
+  display: grid;
+  place-items: center;
+  width: 29%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--cover-accent) 40%, transparent);
+  border-radius: 24%;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--cover-accent) 18%, #151722), #131622);
+  box-shadow: 0 16px 40px #0005, inset 0 1px 0 #ffffff15;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  transition: transform 350ms ease;
+}
+
+.project-cover-symbol svg {
+  width: 53%;
+  height: 53%;
+}
+
+.group:hover .project-cover-symbol {
+  transform: translate(-50%, -53%) rotate(0deg);
+}
+
+.project-cover-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 1px solid #ffffff15;
+  border-radius: 5px;
+  padding: 3px 7px;
+  font: 10px var(--font-mono);
+  color: #ffffff80;
+}
+
+.project-cover-mark {
+  position: absolute;
+  right: 14px;
+  bottom: 53px;
+  max-width: 85%;
+  font-size: clamp(12px, 1.4vw, 17px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #ffffffb3;
+}
+
+.project-details .project-cover {
+  aspect-ratio: 12 / 5;
+}
+
+.project-details .project-cover-symbol {
+  width: 20%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-cover-symbol {
+    transition: none;
+  }
+}

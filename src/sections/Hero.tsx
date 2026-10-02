@@ -1,11 +1,19 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Download, Mail } from 'lucide-react'
 import { Badge } from '../components/ui/Badge'
+import { GithubIcon, LinkedinIcon } from '../components/ui/BrandIcons'
+import { profile } from '../data/profile'
 import { stats } from '../data/stats'
 import { useCountUp } from '../hooks/useCountUp'
 import { useLanguage } from '../hooks/useLanguage'
 import { useT } from '../hooks/useT'
 import { useTypingEffect } from '../hooks/useTypingEffect'
+import { isLinkAvailable } from '../utils/projectUrl'
+
+const socialLinks = [
+  { icon: GithubIcon, href: profile.github.url, label: 'GitHub' },
+  { icon: LinkedinIcon, href: profile.linkedin.url, label: 'LinkedIn' },
+].filter((social) => isLinkAvailable(social.href))
 
 function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const count = useCountUp(value, true)
@@ -97,6 +105,18 @@ export function Hero() {
             >
               <Download size={16} /> {t('hero.ctaResume')}
             </a>
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all hover:border-violet-400/60 hover:text-white light:text-black/70"
+              >
+                <social.icon size={18} />
+              </a>
+            ))}
           </motion.div>
 
           <motion.div

@@ -15,6 +15,7 @@
     />
     <meta name="author" content="Axror Murodov" />
     <meta name="keywords" content="Axror Murodov, frontend developer, React developer, TypeScript, Tashkent, Uzbekistan, murodov.dev" />
+    <link rel="canonical" href="https://axrordev.uz/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -42,6 +43,26 @@
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured data. sameAs lists only confirmed, non-placeholder profile links —
+         add LinkedIn/Telegram here once src/data/profile.ts has real URLs for them. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Axror Murodov",
+        "jobTitle": "Frontend Developer",
+        "url": "https://axrordev.uz/",
+        "image": "https://axrordev.uz/og-image.png",
+        "sameAs": ["https://github.com/murodovaxror9-coder"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tashkent",
+          "addressCountry": "UZ"
+        },
+        "knowsAbout": ["React", "TypeScript", "JavaScript", "Tailwind CSS", "Node.js", "Express.js"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

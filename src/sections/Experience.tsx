@@ -29,7 +29,7 @@ export function Experience() {
               <GlassCard hover>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h3 className="text-lg font-semibold">{t(item.titleKey)}</h3>
-                  <span className="font-mono text-xs text-white/40 light:text-black/40">{item.period}</span>
+                  <span className="font-mono text-xs text-white/40 light:text-black/40">{t(item.periodKey)}</span>
                 </div>
                 <div className="mt-1 text-sm font-medium text-cyan-400">{item.place}</div>
                 <p className="mt-3 text-sm leading-relaxed text-white/60 light:text-black/60">

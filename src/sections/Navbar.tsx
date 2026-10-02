@@ -1,16 +1,23 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { navItems } from '../data/navigation'
 import { profile } from '../data/profile'
+import { useActiveSection } from '../hooks/useActiveSection'
 import { useT } from '../hooks/useT'
+
+const sectionIds = navItems.map((item) => item.id)
 
 export function Navbar() {
   const t = useT()
+  const { pathname } = useLocation()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const activeId = useActiveSection(sectionIds)
+  const isHome = pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 16)
@@ -28,7 +35,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#top" className="flex flex-col leading-none">
+        <a href="/#top" className="flex flex-col leading-none">
           <span className="text-lg font-bold tracking-tight">
             {profile.name.split(' ')[0]} <span className="gradient-text">{profile.name.split(' ')[1]}</span>
           </span>
@@ -42,7 +49,12 @@ export function Navbar() {
             <a
               key={item.id}
               href={item.href}
-              className="text-sm font-medium text-white/70 transition-colors hover:text-white light:text-black/70 light:hover:text-black"
+              aria-current={isHome && activeId === item.id ? 'true' : undefined}
+              className={`text-sm font-medium transition-colors hover:text-white light:hover:text-black ${
+                isHome && activeId === item.id
+                  ? 'text-cyan-300 light:text-cyan-700'
+                  : 'text-white/70 light:text-black/70'
+              }`}
             >
               {t(item.labelKey)}
             </a>
@@ -53,7 +65,7 @@ export function Navbar() {
           <LanguageToggle />
           <ThemeToggle />
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:brightness-110"
           >
             {t('nav.hireMe')}
@@ -94,7 +106,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={closeMenu}
                 className="mt-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-5 py-3 text-center text-sm font-semibold text-white"
               >

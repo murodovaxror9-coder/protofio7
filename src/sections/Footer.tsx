@@ -3,6 +3,7 @@ import { InstagramIcon, LinkedinIcon } from '../components/ui/BrandIcons'
 import { navItems } from '../data/navigation'
 import { profile } from '../data/profile'
 import { useT } from '../hooks/useT'
+import { isLinkAvailable } from '../utils/projectUrl'
 
 export function Footer() {
   const t = useT()
@@ -13,7 +14,7 @@ export function Footer() {
     { icon: Send, href: profile.telegram.url, label: 'Telegram' },
     { icon: InstagramIcon, href: profile.instagram.url, label: 'Instagram' },
     { icon: LinkedinIcon, href: profile.linkedin.url, label: 'LinkedIn' },
-  ]
+  ].filter((social) => social.label === 'Email' || isLinkAvailable(social.href))
 
   return (
     <footer className="relative border-t border-white/10 py-10">
@@ -53,7 +54,7 @@ export function Footer() {
             </a>
           ))}
           <a
-            href="#top"
+            href="/#top"
             aria-label={t('footer.backToTop')}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/60 transition-colors hover:border-cyan-400/50 hover:text-white light:text-black/60"
           >
