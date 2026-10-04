@@ -23,7 +23,7 @@ export function Experience() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="relative"
             >
-              <span className="absolute -left-[41px] top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-cyan-400 text-white sm:-left-[49px]">
+              <span className="absolute -left-[41px] top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-white sm:-left-[49px]">
                 <Briefcase size={14} />
               </span>
               <GlassCard hover>

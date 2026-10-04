@@ -9,7 +9,7 @@ export function NotFound() {
   return (
     <section className="relative flex min-h-[70vh] items-center overflow-hidden py-24">
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
-      <div className="glow-orb -left-24 top-10 h-72 w-72 bg-violet-500" />
+      <div className="glow-orb -left-24 top-10 h-72 w-72 bg-blue-500" />
       <div className="glow-orb right-0 top-40 h-72 w-72 bg-cyan-400" />
 
       <motion.div
@@ -28,7 +28,7 @@ export function NotFound() {
         <p className="text-sm leading-relaxed text-white/60 light:text-black/60">{t('notFound.description')}</p>
         <Link
           to="/"
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:brightness-110"
+          className="mt-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
         >
           <ArrowLeft size={16} /> {t('notFound.backHome')}
         </Link>

@@ -66,7 +66,7 @@ export function Navbar() {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:brightness-110"
+            className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
           >
             {t('nav.hireMe')}
           </a>
@@ -108,7 +108,7 @@ export function Navbar() {
               <a
                 href="/#contact"
                 onClick={closeMenu}
-                className="mt-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-5 py-3 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-3 text-center text-sm font-semibold text-white"
               >
                 {t('nav.hireMe')}
               </a>

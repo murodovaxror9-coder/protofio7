@@ -4,9 +4,9 @@ type Variant = 'primary' | 'outline' | 'ghost'
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-gradient-to-r from-violet-500 to-cyan-400 text-white shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:brightness-110',
+    'bg-gradient-to-r from-blue-500 to-cyan-400 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:brightness-110',
   outline:
-    'border border-white/15 text-current hover:border-violet-400/60 hover:bg-white/5',
+    'border border-white/15 text-current hover:border-blue-400/60 hover:bg-white/5',
   ghost: 'text-current hover:bg-white/5',
 }
 

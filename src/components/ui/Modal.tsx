@@ -70,7 +70,7 @@ export function Modal({ isOpen, onClose, children, titleId, closeLabel = 'Close'
               type="button"
               onClick={onClose}
               aria-label={closeLabel}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-current hover:border-violet-400/50 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-cyan-400 light:border-black/10"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-current hover:border-blue-400/50 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-cyan-400 light:border-black/10"
             >
               <X size={16} />
             </button>

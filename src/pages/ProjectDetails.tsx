@@ -60,7 +60,7 @@ export function ProjectDetails() {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white"
               >
                 <ExternalLink size={15} /> {t('projects.liveButton')}
               </a>
@@ -103,8 +103,8 @@ export function ProjectDetails() {
             </div>
           )}
 
-          <section className="mt-8 rounded-xl border border-violet-400/20 bg-violet-400/5 p-5">
-            <h2 className="text-sm font-semibold text-violet-300 light:text-violet-700">{t('projects.contribution')}</h2>
+          <section className="mt-8 rounded-xl border border-blue-400/20 bg-blue-400/5 p-5">
+            <h2 className="text-sm font-semibold text-blue-300 light:text-blue-700">{t('projects.contribution')}</h2>
             {project.contributions?.length ? (
               <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-relaxed text-white/70 light:text-black/70">
                 {project.contributions.map((item, index) => (
@@ -153,7 +153,7 @@ function PendingNote({ textKey }: { textKey: string }) {
   return (
     <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
       <p className="text-white/60 light:text-black/60">{t(textKey)}</p>
-      <a href="/#contact" className="inline-flex items-center gap-1 font-medium text-violet-300 light:text-violet-700">
+      <a href="/#contact" className="inline-flex items-center gap-1 font-medium text-blue-300 light:text-blue-700">
         {t('projects.askContribution')} <ArrowUpRight size={14} />
       </a>
     </div>

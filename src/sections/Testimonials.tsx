@@ -21,10 +21,10 @@ export function Testimonials() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {published.map((item) => (
                 <GlassCard key={item.id} className="flex h-full flex-col">
-                  <Quote size={28} aria-hidden="true" className="mb-5 text-violet-400" />
+                  <Quote size={28} aria-hidden="true" className="mb-5 text-blue-400" />
                   <blockquote className="flex-1 text-base leading-relaxed text-white/80 light:text-black/80">“{item.quote[lang]}”</blockquote>
                   <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-5 light:border-black/10">
-                    <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-violet-400/15 text-sm font-semibold text-violet-300 light:text-violet-700">
+                    <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-400/15 text-sm font-semibold text-blue-300 light:text-blue-700">
                       {item.name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => Array.from(part)[0]).join('')}
                     </span>
                     <div>
@@ -38,13 +38,13 @@ export function Testimonials() {
           </>
         ) : (
           <GlassCard className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-violet-400/20 bg-gradient-to-br from-violet-500/15 to-cyan-400/10 text-violet-300 light:text-violet-700">
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-blue-400/20 bg-gradient-to-br from-blue-500/15 to-cyan-400/10 text-blue-300 light:text-blue-700">
               <MessageSquareQuote size={30} strokeWidth={1.5} aria-hidden="true" />
             </span>
             <div>
               <h3 className="text-lg font-semibold">{t('testimonials.emptyTitle')}</h3>
               <p className="mt-2 text-sm leading-relaxed text-white/60 light:text-black/60">{t('testimonials.emptyDescription')}</p>
-              <a href={`mailto:${profile.email}?subject=${encodeURIComponent(t('testimonials.emailSubject'))}`} className="mt-4 inline-flex items-center gap-2 rounded-full border border-violet-400/30 px-4 py-2 text-sm font-medium text-violet-300 transition-colors hover:bg-violet-400/10 light:text-violet-700">
+              <a href={`mailto:${profile.email}?subject=${encodeURIComponent(t('testimonials.emailSubject'))}`} className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-400/30 px-4 py-2 text-sm font-medium text-blue-300 transition-colors hover:bg-blue-400/10 light:text-blue-700">
                 {t('testimonials.action')} <ArrowUpRight size={15} />
               </a>
             </div>

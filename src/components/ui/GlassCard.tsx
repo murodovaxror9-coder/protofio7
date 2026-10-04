@@ -9,7 +9,7 @@ export function GlassCard({ children, hover = false, className = '', ...props }:
   return (
     <div
       className={`glass-card rounded-2xl p-6 ${
-        hover ? 'transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/40' : ''
+        hover ? 'transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40' : ''
       } ${className}`}
       {...props}
     >

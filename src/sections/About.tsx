@@ -42,7 +42,7 @@ export function About() {
           >
             {infoItems.map((item) => (
               <GlassCard key={item.label} className="flex items-center gap-4" hover>
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-400/20 text-cyan-300">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 text-cyan-300">
                   <item.icon size={20} />
                 </div>
                 <div>
@@ -66,7 +66,7 @@ export function About() {
           <a href={profile.github.url} target="_blank" rel="noopener noreferrer">
             <GlassCard className="flex items-center justify-between gap-4" hover>
               <div className="flex items-center gap-4">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-400/20 text-cyan-300">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 text-cyan-300">
                   <GithubIcon size={20} />
                 </div>
                 <div>

@@ -33,7 +33,7 @@ export function AITools() {
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
               >
                 <GlassCard hover className="h-full text-center">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/20 to-cyan-400/20 text-cyan-300">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 text-cyan-300">
                     <Icon size={22} />
                   </div>
                   <h3 className="mt-4 text-sm font-semibold">{tool.name}</h3>

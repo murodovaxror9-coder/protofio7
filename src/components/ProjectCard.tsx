@@ -38,7 +38,7 @@ export function ProjectCard({ project, index, onOpenDetails }: ProjectCardProps)
             <ArrowUpRight size={16} />
           </span>
         </button>
-        {project.featured && <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-violet-300 light:text-violet-700">{t('projects.featured')}</p>}
+        {project.featured && <p className="mb-2 text-[10px] font-semibold uppercase tracking-widest text-blue-300 light:text-blue-700">{t('projects.featured')}</p>}
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-lg font-semibold">{project.title}</h3>
           {hasLive && <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-emerald-300 light:text-emerald-700">
@@ -82,7 +82,7 @@ export function ProjectCard({ project, index, onOpenDetails }: ProjectCardProps)
           <button
             type="button"
             onClick={() => onOpenDetails(project)}
-            className="ml-auto inline-flex items-center gap-1.5 rounded-sm text-xs font-semibold text-violet-300 hover:text-violet-200 light:text-violet-700 light:hover:text-violet-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
+            className="ml-auto inline-flex items-center gap-1.5 rounded-sm text-xs font-semibold text-blue-300 hover:text-blue-200 light:text-blue-700 light:hover:text-blue-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-400"
           >
             <Info size={14} /> {t('projects.detailsButton')}
           </button>

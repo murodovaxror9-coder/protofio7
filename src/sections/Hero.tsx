@@ -36,7 +36,7 @@ export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
-      <div className="glow-orb -left-24 top-10 h-72 w-72 bg-violet-500" />
+      <div className="glow-orb -left-24 top-10 h-72 w-72 bg-blue-500" />
       <div className="glow-orb right-0 top-40 h-72 w-72 bg-cyan-400" />
 
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
@@ -88,13 +88,13 @@ export function Hero() {
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-violet-500/25 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
             >
               {t('hero.ctaPrimary')} <ArrowRight size={16} />
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold transition-all hover:border-violet-400/60 hover:bg-white/5"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold transition-all hover:border-blue-400/60 hover:bg-white/5"
             >
               <Mail size={16} /> {t('hero.ctaSecondary')}
             </a>
@@ -112,7 +112,7 @@ export function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all hover:border-violet-400/60 hover:text-white light:text-black/70"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all hover:border-blue-400/60 hover:text-white light:text-black/70"
               >
                 <social.icon size={18} />
               </a>
@@ -135,38 +135,13 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative"
+          className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-blue-500/10"
         >
-          <div className="glass-card overflow-hidden rounded-2xl shadow-2xl shadow-violet-500/10">
-            <div className="flex items-center gap-2 border-b border-white/10 bg-white/5 px-4 py-3">
-              <span className="h-3 w-3 rounded-full bg-red-400/80" />
-              <span className="h-3 w-3 rounded-full bg-yellow-400/80" />
-              <span className="h-3 w-3 rounded-full bg-green-400/80" />
-              <span className="ml-2 font-mono text-xs text-white/40 light:text-black/40">
-                {t('hero.terminal.title')}
-              </span>
-            </div>
-            <div className="space-y-3 p-5 font-mono text-sm">
-              <div className="text-emerald-400">{t('hero.terminal.whoamiCmd')}</div>
-              <div className="text-white/70 light:text-black/70">{t('hero.terminal.whoamiResult')}</div>
-              <div className="pt-2 text-emerald-400">{t('hero.terminal.catCmd')}</div>
-              <pre className="whitespace-pre-wrap text-white/70 light:text-black/70">
-{`{
-  "location": "Tashkent, UZ",
-  "frontend": ["React", "TypeScript", "Tailwind CSS"],
-  "state": ["Zustand", "React Context"],
-  "motion": ["Framer Motion", "Swiper.js"],
-  "backend": ["Node.js", "Express.js"],
-  "ai": ["Claude API", "Telegram Bots"],
-  "status": "available_for_work"
-}`}
-              </pre>
-              <div className="flex items-center gap-1 pt-1">
-                <span className="text-emerald-400">$</span>
-                <span className="typing-cursor h-4" />
-              </div>
-            </div>
-          </div>
+          <img
+            src="/profile-photo.png"
+            alt="Axror Murodov"
+            className="h-full w-full object-cover"
+          />
         </motion.div>
       </div>
     </section>
