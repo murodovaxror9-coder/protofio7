@@ -40,7 +40,7 @@ export function Navbar() {
             {profile.name.split(' ')[0]} <span className="gradient-text">{profile.name.split(' ')[1]}</span>
           </span>
           <span className="font-mono text-[12px] font-medium tracking-[0.2em] text-white/50 light:text-black/60">
-            FRONTEND DEVELOPER
+            FULL STACK DEVELOPER
           </span>
         </a>
 

@@ -23,26 +23,25 @@ export default async function handler(req, res) {
 
   let text
 
-  if (type === 'usta-lead') {
-    const { name, phone, service, location, note } = req.body ?? {}
+  if (type === 'formo-order') {
+    const { name, phone, size, note } = req.body ?? {}
 
     if (
       typeof name !== 'string' ||
       typeof phone !== 'string' ||
-      typeof service !== 'string' ||
+      typeof size !== 'string' ||
       !name.trim() ||
       !phone.trim() ||
-      !service.trim()
+      !size.trim()
     ) {
       return res.status(400).json({ error: 'Invalid form data' })
     }
 
     text =
-      `<b>Yangi ariza — Usta toping</b>\n\n` +
+      `<b>Yangi buyurtma so‘rovi — Formo</b>\n\n` +
       `<b>Ism:</b> ${escapeHtml(name.trim())}\n` +
       `<b>Telefon:</b> ${escapeHtml(phone.trim())}\n` +
-      `<b>Xizmat turi:</b> ${escapeHtml(service.trim())}\n` +
-      (location && location.trim() ? `<b>Manzil:</b> ${escapeHtml(location.trim())}\n` : '') +
+      `<b>O‘lcham:</b> ${escapeHtml(size.trim())}\n` +
       (note && note.trim() ? `<b>Izoh:</b>\n${escapeHtml(note.trim())}` : '')
   } else {
     const { name, email, message } = req.body ?? {}

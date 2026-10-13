@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Loader2, Send } from 'lucide-react'
+import { ExternalLink, Loader2, Send, Shirt } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { GlassCard } from '../components/ui/GlassCard'
 import { SectionHeading } from '../components/ui/SectionHeading'
@@ -8,12 +8,14 @@ import { useT } from '../hooks/useT'
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
+const FORMO_URL = 'https://formo.uz/'
+
 export function Projects() {
   const t = useT()
   const { dict } = useLanguage()
   const [status, setStatus] = useState<FormStatus>('idle')
-  const [form, setForm] = useState({ name: '', phone: '', service: '', location: '', note: '' })
-  const serviceOptions = dict.projects.serviceOptions as unknown as string[]
+  const [form, setForm] = useState({ name: '', phone: '', size: '', note: '' })
+  const sizeOptions = dict.projects.sizeOptions as unknown as string[]
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -24,11 +26,10 @@ export function Projects() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: 'usta-lead',
+          type: 'formo-order',
           name: form.name.trim(),
           phone: form.phone.trim(),
-          service: form.service.trim(),
-          location: form.location.trim(),
+          size: form.size.trim(),
           note: form.note.trim(),
         }),
       })
@@ -36,7 +37,7 @@ export function Projects() {
       if (!res.ok) throw new Error('Request failed')
 
       setStatus('success')
-      setForm({ name: '', phone: '', service: '', location: '', note: '' })
+      setForm({ name: '', phone: '', size: '', note: '' })
     } catch {
       setStatus('error')
     }
@@ -45,26 +46,50 @@ export function Projects() {
   return (
     <section id="projects" className="relative py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
-        <SectionHeading eyebrow="05 / Usta" title={t('projects.title')} />
-        <p className="mb-8 text-center text-sm leading-relaxed text-white/60 light:text-black/60">
-          {t('projects.intro')}
-        </p>
+        <SectionHeading eyebrow="05 / Loyiha" title={t('projects.title')} />
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <GlassCard className="mb-8 flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-400/20 text-cyan-300">
+              <Shirt size={26} />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold">{t('projects.title')}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-white/60 light:text-black/60">{t('projects.intro')}</p>
+            </div>
+            <a
+              href={FORMO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-all hover:border-blue-400/60 hover:bg-white/5"
+            >
+              {t('projects.visitSite')} <ExternalLink size={15} />
+            </a>
+          </GlassCard>
+        </motion.div>
 
         <motion.form
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           onSubmit={handleSubmit}
         >
           <GlassCard className="space-y-5">
+            <h4 className="text-sm font-semibold text-cyan-300 light:text-cyan-700">{t('projects.orderFormTitle')}</h4>
+
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="usta-name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
+                <label htmlFor="formo-name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('projects.formName')}
                 </label>
                 <input
-                  id="usta-name"
+                  id="formo-name"
                   required
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
@@ -73,11 +98,11 @@ export function Projects() {
               </div>
 
               <div>
-                <label htmlFor="usta-phone" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
+                <label htmlFor="formo-phone" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('projects.formPhone')}
                 </label>
                 <input
-                  id="usta-phone"
+                  id="formo-phone"
                   type="tel"
                   required
                   value={form.phone}
@@ -88,20 +113,20 @@ export function Projects() {
             </div>
 
             <div>
-              <label htmlFor="usta-service" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
-                {t('projects.formService')}
+              <label htmlFor="formo-size" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
+                {t('projects.formSize')}
               </label>
               <select
-                id="usta-service"
+                id="formo-size"
                 required
-                value={form.service}
-                onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
+                value={form.size}
+                onChange={(e) => setForm((f) => ({ ...f, size: e.target.value }))}
                 className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
               >
                 <option value="" disabled className="bg-[#0a0a0f] text-white light:bg-white light:text-black">
-                  {t('projects.formServicePlaceholder')}
+                  {t('projects.formSizePlaceholder')}
                 </option>
-                {serviceOptions.map((option) => (
+                {sizeOptions.map((option) => (
                   <option key={option} value={option} className="bg-[#0a0a0f] text-white light:bg-white light:text-black">
                     {option}
                   </option>
@@ -110,23 +135,11 @@ export function Projects() {
             </div>
 
             <div>
-              <label htmlFor="usta-location" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
-                {t('projects.formLocation')}
-              </label>
-              <input
-                id="usta-location"
-                value={form.location}
-                onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))}
-                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="usta-note" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
+              <label htmlFor="formo-note" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                 {t('projects.formNote')}
               </label>
               <textarea
-                id="usta-note"
+                id="formo-note"
                 rows={4}
                 value={form.note}
                 onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}

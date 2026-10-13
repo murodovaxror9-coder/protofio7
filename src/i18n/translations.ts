@@ -6,7 +6,7 @@ export const translations = {
       about: 'Men haqimda',
       tech: 'Texnologiyalar',
       experience: 'Tajriba',
-      projects: 'Usta top',
+      projects: 'Formo',
       ai: 'AI vositalar',
       contact: 'Aloqa',
       hireMe: 'Ish taklif qiling',
@@ -14,11 +14,11 @@ export const translations = {
     hero: {
       badge: 'Ish uchun ochiqman',
       greeting: 'Salom, men',
-      role: 'Frontend Developer',
-      typingRoles: ['Frontend Developer', 'React Developer', 'UI Muhandisi'],
+      role: 'Full Stack Developer',
+      typingRoles: ['Full Stack Developer', 'React Developer', 'Node.js Developer'],
       description:
-        "Zamonaviy, tez va chiroyli veb-ilovalar yarataman. React, TypeScript va Tailwind CSS — mening kundalik qurollarim.",
-      ctaPrimary: 'Usta toping',
+        "Zamonaviy, tez va chiroyli veb-ilovalar yarataman. React, TypeScript, Tailwind CSS va Node.js — mening kundalik qurollarim.",
+      ctaPrimary: 'Formo loyihasi',
       ctaSecondary: 'Bog’lanish',
       ctaResume: 'Rezyume',
       stats: {
@@ -29,7 +29,7 @@ export const translations = {
       terminal: {
         title: 'terminal — zsh',
         whoamiCmd: '$ whoami',
-        whoamiResult: 'axror_murodov — Frontend Developer',
+        whoamiResult: 'axror_murodov — Full Stack Developer',
         catCmd: '$ cat stack.json',
       },
     },
@@ -37,7 +37,7 @@ export const translations = {
       title: 'Men haqimda',
       subtitle: 'Meni tanishtiraman',
       paragraph1:
-        'Salom! Men Axror Murodov — Toshkentda (O‘zbekiston) joylashgan Frontend dasturchiman. Foydalanuvchi tajribasi yaxshi bo‘lgan, tez va barqaror interfeyslar yaratishga qiziqaman.',
+        'Salom! Men Axror Murodov — Toshkentda (O‘zbekiston) joylashgan Full Stack dasturchiman. Foydalanuvchi tajribasi yaxshi bo‘lgan, tez va barqaror interfeyslar hamda backend xizmatlarini yaratishga qiziqaman.',
       paragraph2:
         'Hozirda Mars IT School bilan hamkorlikda bilim va tajribamni oshirib bormoqdaman. React va TypeScript ekotizimida loyihalar ustida ishlash, real muammolarni interfeys darajasida hal qilishni yoqtiraman.',
       paragraph3:
@@ -62,40 +62,34 @@ export const translations = {
       title: 'Tajriba',
       subtitle: 'Yo‘lim',
       marsIt: {
-        title: 'Frontend Dasturchi (o‘quvchi)',
+        title: 'Full Stack Dasturchi (o‘quvchi)',
         period: 'Hozirgacha',
         description:
-          'Mars IT School dasturida React, TypeScript va zamonaviy frontend arxitekturasini chuqur o‘rganmoqdaman, amaliy loyihalar ustida ishlayapman.',
+          'Mars IT School dasturida React, TypeScript va zamonaviy frontend arxitekturasini, shuningdek Node.js/Express asosidagi backend ishlab chiqishni chuqur o‘rganmoqdaman, amaliy loyihalar ustida ishlayapman.',
       },
       freelance: {
-        title: 'Freelance Frontend Dasturchi',
+        title: 'Freelance Full Stack Dasturchi',
         period: 'Hozirgacha',
         description:
           'Mustaqil tartibda kichik biznes va shaxsiy loyihalar uchun veb-saytlar hamda veb-ilovalar ishlab chiqaman.',
       },
     },
     projects: {
-      title: 'Usta toping',
-      subtitle: 'Kerakli mutaxassisni toping',
+      title: 'Formo',
+      subtitle: 'Shaxsiy dizayndagi sport formalari',
       intro:
-        'Santexnik, elektrik, mebel ustasi va boshqa xizmat turlari bo‘yicha arizangizni qoldiring — tez orada siz bilan bog‘lanamiz.',
+        'Formo — futbol formasi va shortikni o‘zingiz dizayn qilib, buyurtma qilish imkonini beruvchi platforma. Mobil ilova ishlab chiqilmoqda, hozircha buyurtmalar Telegram orqali qabul qilinmoqda.',
+      visitSite: 'Saytga o‘tish',
+      orderFormTitle: 'Buyurtma so‘rovi qoldiring',
       formName: 'Ismingiz',
       formPhone: 'Telefon raqamingiz',
-      formService: 'Xizmat turi',
-      formServicePlaceholder: 'Xizmat turini tanlang',
-      serviceOptions: [
-        'Santexnik',
-        'Elektrik',
-        'Mebel ustasi',
-        'Quruvchi / Ta’mirchi',
-        'Konditsioner ustasi',
-        'Boshqa',
-      ],
-      formLocation: 'Manzil / Tuman',
-      formNote: 'Qo‘shimcha izoh',
+      formSize: 'O‘lcham',
+      formSizePlaceholder: 'O‘lchamni tanlang',
+      sizeOptions: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+      formNote: 'Dizayn / klub nomi / qo‘shimcha izoh',
       formSubmit: 'Yuborish',
       formSending: 'Yuborilmoqda...',
-      formSuccess: 'Arizangiz qabul qilindi! Tez orada siz bilan bog‘lanamiz.',
+      formSuccess: 'So‘rovingiz qabul qilindi! Tez orada siz bilan bog‘lanamiz.',
       formError: 'Xatolik yuz berdi. Iltimos, birozdan so‘ng qayta urinib ko‘ring.',
     },
     testimonials: {
@@ -152,7 +146,7 @@ export const translations = {
       about: 'About',
       tech: 'Tech Stack',
       experience: 'Experience',
-      projects: 'Find a Pro',
+      projects: 'Formo',
       ai: 'AI Tools',
       contact: 'Contact',
       hireMe: 'Hire Me',
@@ -160,11 +154,11 @@ export const translations = {
     hero: {
       badge: 'Available for work',
       greeting: "Hi, I'm",
-      role: 'Frontend Developer',
-      typingRoles: ['Frontend Developer', 'React Developer', 'UI Engineer'],
+      role: 'Full Stack Developer',
+      typingRoles: ['Full Stack Developer', 'React Developer', 'Node.js Developer'],
       description:
-        'I build modern, fast and beautiful web applications. React, TypeScript and Tailwind CSS are my everyday tools.',
-      ctaPrimary: 'Find a Pro',
+        'I build modern, fast and beautiful web applications. React, TypeScript, Tailwind CSS and Node.js are my everyday tools.',
+      ctaPrimary: 'Formo Project',
       ctaSecondary: 'Get in Touch',
       ctaResume: 'Resume',
       stats: {
@@ -175,7 +169,7 @@ export const translations = {
       terminal: {
         title: 'terminal — zsh',
         whoamiCmd: '$ whoami',
-        whoamiResult: 'axror_murodov — Frontend Developer',
+        whoamiResult: 'axror_murodov — Full Stack Developer',
         catCmd: '$ cat stack.json',
       },
     },
@@ -183,7 +177,7 @@ export const translations = {
       title: 'About Me',
       subtitle: 'Get to know me',
       paragraph1:
-        "Hi! I'm Axror Murodov, a Frontend Developer based in Tashkent, Uzbekistan. I love building fast, reliable interfaces with a great user experience.",
+        "Hi! I'm Axror Murodov, a Full Stack Developer based in Tashkent, Uzbekistan. I love building fast, reliable interfaces and the backend services behind them.",
       paragraph2:
         "I'm currently growing my skills together with Mars IT School. I enjoy working in the React and TypeScript ecosystem, solving real problems at the interface level.",
       paragraph3:
@@ -208,30 +202,31 @@ export const translations = {
       title: 'Experience',
       subtitle: 'My journey',
       marsIt: {
-        title: 'Frontend Developer (Student)',
+        title: 'Full Stack Developer (Student)',
         period: 'Ongoing',
         description:
-          "Deepening my knowledge of React, TypeScript and modern frontend architecture at Mars IT School, working on hands-on projects.",
+          "Deepening my knowledge of React, TypeScript and modern frontend architecture, as well as Node.js/Express backend development, at Mars IT School, working on hands-on projects.",
       },
       freelance: {
-        title: 'Freelance Frontend Developer',
+        title: 'Freelance Full Stack Developer',
         period: 'Ongoing',
         description:
           'Independently building websites and web applications for small businesses and personal projects.',
       },
     },
     projects: {
-      title: 'Find a Pro',
-      subtitle: 'Find the specialist you need',
+      title: 'Formo',
+      subtitle: 'Custom-designed sports uniforms',
       intro:
-        'Submit a request for a plumber, electrician, furniture specialist or other service — we will get back to you shortly.',
+        'Formo lets you design and order your own football jersey and shorts. The mobile app is in development — orders are currently handled over Telegram.',
+      visitSite: 'Visit site',
+      orderFormTitle: 'Submit an order request',
       formName: 'Your Name',
       formPhone: 'Your Phone Number',
-      formService: 'Service Type',
-      formServicePlaceholder: 'Choose a service type',
-      serviceOptions: ['Plumber', 'Electrician', 'Furniture specialist', 'Builder / Repairman', 'AC technician', 'Other'],
-      formLocation: 'Address / District',
-      formNote: 'Additional notes',
+      formSize: 'Size',
+      formSizePlaceholder: 'Choose a size',
+      sizeOptions: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+      formNote: 'Design / club name / notes',
       formSubmit: 'Send',
       formSending: 'Sending...',
       formSuccess: "Your request was received! We'll get back to you soon.",

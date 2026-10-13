@@ -1,7 +1,7 @@
 {
-  "name": "Axror Murodov — Frontend Developer",
+  "name": "Axror Murodov — Full Stack Developer",
   "short_name": "Axror Murodov",
-  "description": "Axror Murodov — Toshkentda joylashgan Frontend dasturchi. React, TypeScript va Tailwind CSS.",
+  "description": "Axror Murodov — Toshkentda joylashgan Full Stack dasturchi. React, TypeScript, Tailwind CSS va Node.js.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
