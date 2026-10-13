@@ -46,7 +46,7 @@ export function About() {
                   <item.icon size={20} />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-wide text-white/40 light:text-black/40">
+                  <div className="text-xs uppercase tracking-wide text-white/55 light:text-black/60">
                     {item.label}
                   </div>
                   <div className="text-sm font-medium">{item.value}</div>
@@ -70,13 +70,13 @@ export function About() {
                   <GithubIcon size={20} />
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-wide text-white/40 light:text-black/40">
+                  <div className="text-xs uppercase tracking-wide text-white/55 light:text-black/60">
                     {t('about.githubTitle')}
                   </div>
                   <div className="text-sm font-medium">{profile.github.label}</div>
                 </div>
               </div>
-              <ArrowUpRight size={18} className="shrink-0 text-white/40" />
+              <ArrowUpRight size={18} className="shrink-0 text-white/55 light:text-black/60" />
             </GlassCard>
           </a>
         </motion.div>

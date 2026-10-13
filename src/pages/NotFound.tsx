@@ -28,7 +28,7 @@ export function NotFound() {
         <p className="text-sm leading-relaxed text-white/60 light:text-black/60">{t('notFound.description')}</p>
         <Link
           to="/"
-          className="mt-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
+          className="mt-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-[#0a0a0f] shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
         >
           <ArrowLeft size={16} /> {t('notFound.backHome')}
         </Link>

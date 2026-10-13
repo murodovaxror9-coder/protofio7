@@ -23,13 +23,13 @@ export function Experience() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="relative"
             >
-              <span className="absolute -left-[41px] top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-white sm:-left-[49px]">
+              <span className="absolute -left-[41px] top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 text-[#0a0a0f] sm:-left-[49px]">
                 <Briefcase size={14} />
               </span>
               <GlassCard hover>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <h3 className="text-lg font-semibold">{t(item.titleKey)}</h3>
-                  <span className="font-mono text-xs text-white/40 light:text-black/40">{t(item.periodKey)}</span>
+                  <span className="font-mono text-xs text-white/55 light:text-black/60">{t(item.periodKey)}</span>
                 </div>
                 <div className="mt-1 text-sm font-medium text-cyan-400">{item.place}</div>
                 <p className="mt-3 text-sm leading-relaxed text-white/60 light:text-black/60">

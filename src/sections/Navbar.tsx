@@ -39,7 +39,7 @@ export function Navbar() {
           <span className="text-lg font-bold tracking-tight">
             {profile.name.split(' ')[0]} <span className="gradient-text">{profile.name.split(' ')[1]}</span>
           </span>
-          <span className="font-mono text-[10px] font-medium tracking-[0.25em] text-white/50 light:text-black/50">
+          <span className="font-mono text-[12px] font-medium tracking-[0.2em] text-white/50 light:text-black/60">
             FRONTEND DEVELOPER
           </span>
         </a>
@@ -66,7 +66,7 @@ export function Navbar() {
           <ThemeToggle />
           <a
             href="/#contact"
-            className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
+            className="rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0f] shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
           >
             {t('nav.hireMe')}
           </a>
@@ -108,7 +108,7 @@ export function Navbar() {
               <a
                 href="/#contact"
                 onClick={closeMenu}
-                className="mt-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-3 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-3 text-center text-sm font-semibold text-[#0a0a0f]"
               >
                 {t('nav.hireMe')}
               </a>

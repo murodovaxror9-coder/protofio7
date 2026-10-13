@@ -60,7 +60,7 @@ export function Projects() {
           <GlassCard className="space-y-5">
             <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="usta-name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                <label htmlFor="usta-name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('projects.formName')}
                 </label>
                 <input
@@ -73,7 +73,7 @@ export function Projects() {
               </div>
 
               <div>
-                <label htmlFor="usta-phone" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                <label htmlFor="usta-phone" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('projects.formPhone')}
                 </label>
                 <input
@@ -88,7 +88,7 @@ export function Projects() {
             </div>
 
             <div>
-              <label htmlFor="usta-service" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+              <label htmlFor="usta-service" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                 {t('projects.formService')}
               </label>
               <select
@@ -110,7 +110,7 @@ export function Projects() {
             </div>
 
             <div>
-              <label htmlFor="usta-location" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+              <label htmlFor="usta-location" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                 {t('projects.formLocation')}
               </label>
               <input
@@ -122,7 +122,7 @@ export function Projects() {
             </div>
 
             <div>
-              <label htmlFor="usta-note" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+              <label htmlFor="usta-note" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                 {t('projects.formNote')}
               </label>
               <textarea
@@ -137,7 +137,7 @@ export function Projects() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-[#0a0a0f] shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 disabled:opacity-60"
             >
               {status === 'sending' ? (
                 <>

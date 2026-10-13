@@ -71,7 +71,7 @@ export function Contact() {
                       <card.icon size={20} />
                     </div>
                     <div className="min-w-0">
-                      <div className="text-xs uppercase tracking-wide text-white/40 light:text-black/40">
+                      <div className="text-xs uppercase tracking-wide text-white/55 light:text-black/60">
                         {card.label}
                       </div>
                       <div className="truncate text-sm font-medium">{card.value}</div>
@@ -98,7 +98,7 @@ export function Contact() {
           >
             <GlassCard className="space-y-5">
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('contact.formName')}
                 </label>
                 <input
@@ -111,7 +111,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60">
                   {t('contact.formEmail')}
                 </label>
                 <input
@@ -127,7 +127,7 @@ export function Contact() {
               <div>
                 <label
                   htmlFor="message"
-                  className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50"
+                  className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/60"
                 >
                   {t('contact.formMessage')}
                 </label>
@@ -144,7 +144,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-[#0a0a0f] shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 disabled:opacity-60"
               >
                 {status === 'sending' ? (
                   <>

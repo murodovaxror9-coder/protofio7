@@ -21,9 +21,9 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 sm:px-8 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
           <div className="text-sm font-bold">
-            {profile.name} <span className="text-white/40 light:text-black/40">/ {profile.brand}</span>
+            {profile.name} <span className="text-white/55 light:text-black/60">/ {profile.brand}</span>
           </div>
-          <div className="mt-1 text-xs text-white/40 light:text-black/40">
+          <div className="mt-1 text-xs text-white/55 light:text-black/60">
             © {year} {profile.name}. {t('footer.rights')}
           </div>
         </div>
@@ -63,7 +63,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-6 max-w-6xl px-5 text-center text-[11px] text-white/30 light:text-black/30 sm:px-8">
+      <div className="mx-auto mt-6 max-w-6xl px-5 text-center text-xs text-white/55 light:text-black/60 sm:px-8">
         {t('footer.builtWith')}
       </div>
     </footer>

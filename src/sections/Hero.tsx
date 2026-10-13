@@ -23,7 +23,7 @@ function StatCounter({ value, suffix, label }: { value: number; suffix: string; 
         <span className="gradient-text">{count}</span>
         <span className="gradient-text">{suffix}</span>
       </span>
-      <span className="text-xs font-medium text-white/50 light:text-black/50">{label}</span>
+      <span className="text-xs font-medium text-white/50 light:text-black/60">{label}</span>
     </div>
   )
 }
@@ -88,7 +88,7 @@ export function Hero() {
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-[#0a0a0f] shadow-lg shadow-blue-500/25 transition-all hover:brightness-110"
             >
               {t('hero.ctaPrimary')} <ArrowRight size={16} />
             </a>
@@ -138,8 +138,12 @@ export function Hero() {
           className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-blue-500/10"
         >
           <img
-            src="/profile-photo.png"
+            src="/profile-photo.webp"
             alt="Axror Murodov"
+            width={900}
+            height={900}
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </motion.div>
