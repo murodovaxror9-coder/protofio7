@@ -12,18 +12,19 @@ export default async function handler(req, res) {
   }
 
   const { type } = req.body ?? {}
+  const isFormoOrder = type === 'formo-order'
 
-  const botToken = process.env.TELEGRAM_BOT_TOKEN
-  const chatId = process.env.TELEGRAM_CHAT_ID
+  const botToken = isFormoOrder ? process.env.TELEGRAM_FORMO_BOT_TOKEN : process.env.TELEGRAM_CONTACT_BOT_TOKEN
+  const chatId = isFormoOrder ? process.env.TELEGRAM_FORMO_CHAT_ID : process.env.TELEGRAM_CONTACT_CHAT_ID
 
   if (!botToken || !chatId) {
-    console.error('Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID env vars')
+    console.error(isFormoOrder ? 'Missing TELEGRAM_FORMO_BOT_TOKEN or TELEGRAM_FORMO_CHAT_ID env vars' : 'Missing TELEGRAM_CONTACT_BOT_TOKEN or TELEGRAM_CONTACT_CHAT_ID env vars')
     return res.status(500).json({ error: 'Server is not configured' })
   }
 
   let text
 
-  if (type === 'formo-order') {
+  if (isFormoOrder) {
     const { name, phone, size, note } = req.body ?? {}
 
     if (

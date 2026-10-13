@@ -40,8 +40,10 @@ function devApiPlugin(env: Record<string, string>): Plugin {
           } catch {
             ;(req as IncomingMessage & { body?: unknown }).body = {}
           }
-          process.env.TELEGRAM_BOT_TOKEN = env.TELEGRAM_BOT_TOKEN
-          process.env.TELEGRAM_CHAT_ID = env.TELEGRAM_CHAT_ID
+          process.env.TELEGRAM_FORMO_BOT_TOKEN = env.TELEGRAM_FORMO_BOT_TOKEN
+          process.env.TELEGRAM_FORMO_CHAT_ID = env.TELEGRAM_FORMO_CHAT_ID
+          process.env.TELEGRAM_CONTACT_BOT_TOKEN = env.TELEGRAM_CONTACT_BOT_TOKEN
+          process.env.TELEGRAM_CONTACT_CHAT_ID = env.TELEGRAM_CONTACT_CHAT_ID
           void sendTelegramHandler(req as never, devRes as never)
         })
       })
