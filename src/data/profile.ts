@@ -15,7 +15,6 @@ export interface Profile {
   instagram: SocialLink
   github: SocialLink
   linkedin: SocialLink
-  telegramBot: SocialLink
 }
 
 export const profile: Profile = {
@@ -41,9 +40,5 @@ export const profile: Profile = {
   linkedin: {
     label: 'linkedin.com/in/axror-murodov',
     url: 'https://www.linkedin.com/in/axror-murodov-b54123403/',
-  },
-  telegramBot: {
-    label: '@murodov_dev_bot', // TODO: Contact form yuboradigan Telegram bot username
-    url: 'https://t.me/murodov_dev_bot', // TODO
   },
 }
