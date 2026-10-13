@@ -98,11 +98,11 @@ export function Projects() {
                 onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
                 className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
               >
-                <option value="" disabled>
+                <option value="" disabled className="bg-[#0a0a0f] text-white light:bg-white light:text-black">
                   {t('projects.formServicePlaceholder')}
                 </option>
                 {serviceOptions.map((option) => (
-                  <option key={option} value={option} className="bg-[#0a0a0f]">
+                  <option key={option} value={option} className="bg-[#0a0a0f] text-white light:bg-white light:text-black">
                     {option}
                   </option>
                 ))}
