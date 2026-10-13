@@ -11,18 +11,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { name, email, message } = req.body ?? {}
-
-  if (
-    typeof name !== 'string' ||
-    typeof email !== 'string' ||
-    typeof message !== 'string' ||
-    !name.trim() ||
-    !email.trim() ||
-    !message.trim()
-  ) {
-    return res.status(400).json({ error: 'Invalid form data' })
-  }
+  const { type } = req.body ?? {}
 
   const botToken = process.env.TELEGRAM_BOT_TOKEN
   const chatId = process.env.TELEGRAM_CHAT_ID
@@ -32,11 +21,49 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server is not configured' })
   }
 
-  const text =
-    `<b>Yangi xabar — portfolio sayt</b>\n\n` +
-    `<b>Ism:</b> ${escapeHtml(name.trim())}\n` +
-    `<b>Email:</b> ${escapeHtml(email.trim())}\n` +
-    `<b>Xabar:</b>\n${escapeHtml(message.trim())}`
+  let text
+
+  if (type === 'usta-lead') {
+    const { name, phone, service, location, note } = req.body ?? {}
+
+    if (
+      typeof name !== 'string' ||
+      typeof phone !== 'string' ||
+      typeof service !== 'string' ||
+      !name.trim() ||
+      !phone.trim() ||
+      !service.trim()
+    ) {
+      return res.status(400).json({ error: 'Invalid form data' })
+    }
+
+    text =
+      `<b>Yangi ariza — Usta toping</b>\n\n` +
+      `<b>Ism:</b> ${escapeHtml(name.trim())}\n` +
+      `<b>Telefon:</b> ${escapeHtml(phone.trim())}\n` +
+      `<b>Xizmat turi:</b> ${escapeHtml(service.trim())}\n` +
+      (location && location.trim() ? `<b>Manzil:</b> ${escapeHtml(location.trim())}\n` : '') +
+      (note && note.trim() ? `<b>Izoh:</b>\n${escapeHtml(note.trim())}` : '')
+  } else {
+    const { name, email, message } = req.body ?? {}
+
+    if (
+      typeof name !== 'string' ||
+      typeof email !== 'string' ||
+      typeof message !== 'string' ||
+      !name.trim() ||
+      !email.trim() ||
+      !message.trim()
+    ) {
+      return res.status(400).json({ error: 'Invalid form data' })
+    }
+
+    text =
+      `<b>Yangi xabar — portfolio sayt</b>\n\n` +
+      `<b>Ism:</b> ${escapeHtml(name.trim())}\n` +
+      `<b>Email:</b> ${escapeHtml(email.trim())}\n` +
+      `<b>Xabar:</b>\n${escapeHtml(message.trim())}`
+  }
 
   try {
     const telegramRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {

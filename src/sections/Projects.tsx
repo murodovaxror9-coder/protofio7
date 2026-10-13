@@ -1,126 +1,164 @@
-import { ArrowUpRight, Check, ExternalLink, FileText } from 'lucide-react'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ProjectCard } from '../components/ProjectCard'
-import { ProjectCover } from '../components/ProjectCover'
-import { GithubIcon } from '../components/ui/BrandIcons'
-import { Modal } from '../components/ui/Modal'
+import { motion } from 'framer-motion'
+import { Loader2, Send } from 'lucide-react'
+import { useState, type FormEvent } from 'react'
+import { GlassCard } from '../components/ui/GlassCard'
 import { SectionHeading } from '../components/ui/SectionHeading'
-import { projects, type Project } from '../data/projects'
-import { projectStories } from '../data/projectStories'
 import { useLanguage } from '../hooks/useLanguage'
 import { useT } from '../hooks/useT'
-import { isProjectUrlAvailable } from '../utils/projectUrl'
+
+type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 export function Projects() {
   const t = useT()
-  const { lang } = useLanguage()
-  const [activeProject, setActiveProject] = useState<Project | null>(null)
-  const story = activeProject ? projectStories[activeProject.id] : undefined
-  const hasLive = activeProject ? isProjectUrlAvailable(activeProject.liveUrl) : false
-  const hasCode = activeProject ? isProjectUrlAvailable(activeProject.codeUrl) : false
+  const { dict } = useLanguage()
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const [form, setForm] = useState({ name: '', phone: '', service: '', location: '', note: '' })
+  const serviceOptions = dict.projects.serviceOptions as unknown as string[]
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('sending')
+
+    try {
+      const res = await fetch('/api/send-telegram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'usta-lead',
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          service: form.service.trim(),
+          location: form.location.trim(),
+          note: form.note.trim(),
+        }),
+      })
+
+      if (!res.ok) throw new Error('Request failed')
+
+      setStatus('success')
+      setForm({ name: '', phone: '', service: '', location: '', note: '' })
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
     <section id="projects" className="relative py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionHeading eyebrow="05 / Work" title={t('projects.title')} />
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <SectionHeading eyebrow="05 / Usta" title={t('projects.title')} />
+        <p className="mb-8 text-center text-sm leading-relaxed text-white/60 light:text-black/60">
+          {t('projects.intro')}
+        </p>
 
-        <div className="mb-8 flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-          <p className="max-w-xl text-sm leading-relaxed text-white/60 light:text-black/60">{t('projects.intro')}</p>
-          <a href="#testimonials" className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-cyan-300 light:text-cyan-700">
-            {t('projects.feedbackLink')} <ArrowUpRight size={16} />
-          </a>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, idx) => (
-            <ProjectCard key={project.id} project={project} index={idx} onOpenDetails={setActiveProject} />
-          ))}
-        </div>
-      </div>
-
-      <Modal isOpen={activeProject !== null} onClose={() => setActiveProject(null)} titleId="project-title" closeLabel={t('projects.closeButton')}>
-        {activeProject && (
-          <div>
-            <h3 id="project-title" className="mb-5 pr-10 text-2xl font-bold">{activeProject.title}</h3>
-            <ProjectCover key={activeProject.id} project={activeProject} />
-            <div className="mt-3 flex flex-wrap gap-2">
-              {activeProject.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-md bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/70 light:text-black/70"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/70 light:text-black/70">
-              {t(activeProject.detailsKey)}
-            </p>
-            {story && (
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 light:border-black/10 light:bg-black/[0.02]">
-                  <h4 className="text-sm font-semibold text-cyan-300 light:text-cyan-700">{t('projects.problem')}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-white/70 light:text-black/70">{story.problem[lang]}</p>
-                </div>
-                <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4 light:border-black/10 light:bg-black/[0.02]">
-                  <h4 className="text-sm font-semibold text-cyan-300 light:text-cyan-700">{t('projects.highlights')}</h4>
-                  <ul className="mt-3 space-y-3">
-                    {story.highlights.map((item, index) => (
-                      <li key={index} className="flex gap-2 text-sm leading-relaxed text-white/70 light:text-black/70">
-                        <Check size={15} aria-hidden="true" className="mt-1 shrink-0 text-cyan-400 light:text-cyan-700" />{item[lang]}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+        <motion.form
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          onSubmit={handleSubmit}
+        >
+          <GlassCard className="space-y-5">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div>
+                <label htmlFor="usta-name" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                  {t('projects.formName')}
+                </label>
+                <input
+                  id="usta-name"
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
+                />
               </div>
-            )}
-            <div className="mt-5 rounded-xl border border-blue-400/20 bg-blue-400/5 p-4">
-              <h4 className="text-sm font-semibold text-blue-300 light:text-blue-700">{t('projects.contribution')}</h4>
-              {activeProject.contributions?.length ? (
-                <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-relaxed text-white/70 light:text-black/70">
-                  {activeProject.contributions.map((item, index) => <li key={index}>{item[lang]}</li>)}
-                </ul>
+
+              <div>
+                <label htmlFor="usta-phone" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                  {t('projects.formPhone')}
+                </label>
+                <input
+                  id="usta-phone"
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
+                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="usta-service" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                {t('projects.formService')}
+              </label>
+              <select
+                id="usta-service"
+                required
+                value={form.service}
+                onChange={(e) => setForm((f) => ({ ...f, service: e.target.value }))}
+                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
+              >
+                <option value="" disabled>
+                  {t('projects.formServicePlaceholder')}
+                </option>
+                {serviceOptions.map((option) => (
+                  <option key={option} value={option} className="bg-[#0a0a0f]">
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="usta-location" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                {t('projects.formLocation')}
+              </label>
+              <input
+                id="usta-location"
+                value={form.location}
+                onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))}
+                className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="usta-note" className="mb-1.5 block text-xs font-medium text-white/50 light:text-black/50">
+                {t('projects.formNote')}
+              </label>
+              <textarea
+                id="usta-note"
+                rows={4}
+                value={form.note}
+                onChange={(e) => setForm((f) => ({ ...f, note: e.target.value }))}
+                className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors focus:border-blue-400/60"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:brightness-110 disabled:opacity-60"
+            >
+              {status === 'sending' ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" /> {t('projects.formSending')}
+                </>
               ) : (
-                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-                  <p className="text-white/60 light:text-black/60">{t('projects.contributionPending')}</p>
-                  <a href="#contact" onClick={() => setActiveProject(null)} className="inline-flex items-center gap-1 font-medium text-blue-300 light:text-blue-700">
-                    {t('projects.askContribution')} <ArrowUpRight size={14} />
-                  </a>
-                </div>
+                <>
+                  <Send size={16} /> {t('projects.formSubmit')}
+                </>
               )}
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3 border-t border-white/10 pt-5">
-              {hasLive && <a
-                href={activeProject.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 px-5 py-2.5 text-sm font-semibold text-white"
-              >
-                <ExternalLink size={15} /> {t('projects.liveButton')}
-              </a>}
-              {hasCode && <a
-                href={activeProject.codeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold hover:bg-white/5"
-              >
-                <GithubIcon size={15} /> {t('projects.codeButton')}
-              </a>}
-              {!hasLive && !hasCode && <p className="text-xs text-white/50 light:text-black/60">{t('projects.linksPending')}</p>}
-              {activeProject.featured && (
-                <Link
-                  to={`/projects/${activeProject.id}`}
-                  onClick={() => setActiveProject(null)}
-                  className="ml-auto inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/5 px-5 py-2.5 text-sm font-semibold text-cyan-300 hover:bg-cyan-400/10 light:text-cyan-700"
-                >
-                  <FileText size={15} /> {t('projects.caseStudyButton')}
-                </Link>
-              )}
-            </div>
-          </div>
-        )}
-      </Modal>
+            </button>
+
+            {status === 'success' && (
+              <p className="text-center text-sm font-medium text-emerald-400">{t('projects.formSuccess')}</p>
+            )}
+            {status === 'error' && (
+              <p className="text-center text-sm font-medium text-red-400">{t('projects.formError')}</p>
+            )}
+          </GlassCard>
+        </motion.form>
+      </div>
     </section>
   )
 }

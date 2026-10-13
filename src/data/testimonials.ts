@@ -1,4 +1,7 @@
-import type { LocalizedText } from './projects'
+export interface LocalizedText {
+  uz: string
+  en: string
+}
 
 export interface Testimonial {
   id: string

@@ -6,7 +6,6 @@ import { Home } from './pages/Home'
 import { Footer } from './sections/Footer'
 import { Navbar } from './sections/Navbar'
 
-const ProjectDetails = lazy(() => import('./pages/ProjectDetails'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
               <Suspense fallback={null}>
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  <Route path="/projects/:id" element={<ProjectDetails />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
